@@ -8,10 +8,10 @@ public class Room : MonoBehaviour
     public enum RoomPosition { Top, Bottom, Right, Left, def };
     [SerializeField] private List<RoomPosition> freeRooms;
 
-    [SerializeField] private List<GameObject> child;
+    [SerializeField] public List<GameObject> child;
     private RoomPosition rp;
 
-    public GameObject CreateRoom(GameObject room)
+    public GameObject CreateRoom(GameObject room, float scale)
     {
         ClearList();
 
@@ -20,32 +20,30 @@ public class Room : MonoBehaviour
         else
             rp = RoomPosition.def;
 
-        Debug.Log(rp);
-
         switch (rp)
         {
             case RoomPosition.Top:
-                child.Add(Instantiate(room, transform.position + (Vector3.forward * 10), transform.rotation));
+                child.Add(Instantiate(room, transform.position + (Vector3.forward * scale), transform.rotation));
                 ClearList();
                 //freeRooms.Remove(rp);
                 return child[^1];
             case RoomPosition.Bottom:
-                child.Add(Instantiate(room, transform.position + (Vector3.back * 10), transform.rotation));
+                child.Add(Instantiate(room, transform.position + (Vector3.back * scale), transform.rotation));
                 ClearList();
                 //freeRooms.Remove(rp);
                 return child[^1];
             case RoomPosition.Right:
-                child.Add(Instantiate(room, transform.position + (Vector3.right * 10), transform.rotation));
+                child.Add(Instantiate(room, transform.position + (Vector3.right * scale), transform.rotation));
                 ClearList();
                 //freeRooms.Remove(RoomPosition.Right);
                 return child[^1];
             case RoomPosition.Left:
-                child.Add(Instantiate(room, transform.position + (Vector3.left * 10), transform.rotation));
+                child.Add(Instantiate(room, transform.position + (Vector3.left * scale), transform.rotation));
                 ClearList();
                 //freeRooms.Remove(RoomPosition.Left);
                 return child[^1];
             default:
-                return child[^1].GetComponent<Room>().CreateRoom(room);
+                return child[^1].GetComponent<Room>().CreateRoom(room, scale);
         }
     }
 

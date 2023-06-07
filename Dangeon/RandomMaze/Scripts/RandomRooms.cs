@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class RandomRooms : MonoBehaviour
 {
+    // [Header("Status")]
+    [SerializeField] private enum Status { roomGenerator, A };
+    [SerializeField] private Status status;
+
     [Header("Room")]
+    [SerializeField] private GameObject door;
     [SerializeField] private GameObject room;
     [SerializeField] private List<GameObject> roomList;
+    [SerializeField] private List<GameObject> doorList;
 
-    [Header("Currents")]
-    [SerializeField] private float currentTime;
+    [Header("Stats")]
+    [SerializeField] private int level;
+    [SerializeField] private float scale;
 
-    [Header("Level")]
-    [SerializeField] private int level = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject r = room;
-        roomList.Add(Instantiate(r, new Vector3(50, 0, 50), room.transform.rotation));
+        room.transform.localScale = new(scale, 1, scale);
+        roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
         level--;
     }
 
@@ -26,18 +31,21 @@ public class RandomRooms : MonoBehaviour
     {
         if (level > 0)
         {
-            if (currentTime > 0.1f)
+            roomList.Add(roomList[Random.Range(0, roomList.Count - 1)].GetComponent<Room>().CreateRoom(room, scale));
+            level--;
+        } else if (level == 0)
+        {
+            foreach (GameObject pattern in roomList)
             {
-                GameObject r = room;
-                roomList.Add(roomList[Random.Range(0, roomList.Count - 1)].GetComponent<Room>().CreateRoom(r));
-                //Random.Range(0, roomList.Count - 1)
-                level--;
-                currentTime = 0;
+                foreach (GameObject child in pattern.GetComponent<Room>().child)
+                {
+                    door.transform.localScale = new(scale, 1, scale);
+                    door.transform.position = pattern.transform.position;
+                    door.transform.LookAt(child.transform.position);
+                    Instantiate(door);
+                }
             }
-            else
-            {
-                currentTime += Time.deltaTime;
-            }
+            level--;
         }
     }
 }
