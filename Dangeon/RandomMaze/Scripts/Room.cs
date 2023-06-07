@@ -11,6 +11,7 @@ public class Room : MonoBehaviour
     [SerializeField] public List<GameObject> child;
     private RoomPosition rp;
 
+
     public GameObject CreateRoom(GameObject room, float scale)
     {
         ClearList();
@@ -49,6 +50,24 @@ public class Room : MonoBehaviour
             {
                 freeRooms.Add((RoomPosition)item.roomPosition);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

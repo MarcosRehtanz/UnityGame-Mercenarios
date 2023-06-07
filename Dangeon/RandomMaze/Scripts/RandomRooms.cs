@@ -7,10 +7,14 @@ using Unity.AI.Navigation;
 public class RandomRooms : MonoBehaviour
 {
     // [Header("Status")]
-    [SerializeField] private enum Status { roomGenerator, doorGenerator, enemyGenerator, A };
+    [SerializeField] private enum Status { roomGenerator, doorGenerator, enemyGenerator, Render };
     [SerializeField] private Status status;
+    [SerializeField] private Vector3 playerPosition;
+    [SerializeField] private BoxCollider renderBox;
 
     [Header("Room")]
+    [SerializeField] private GameObject parentFloor;
+    [SerializeField] private GameObject parentDoor;
     [SerializeField] private GameObject room;
     [SerializeField] private GameObject door;
     [SerializeField] private List<GameObject> roomList;
@@ -30,7 +34,11 @@ public class RandomRooms : MonoBehaviour
     {
         room.transform.localScale = new(scale, 1, scale);
         roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
+        roomList[^1].transform.SetParent(parentFloor.transform);
         level--;
+
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        renderBox = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -44,6 +52,9 @@ public class RandomRooms : MonoBehaviour
                     break;
                 }
                 roomList.Add(roomList[Random.Range(0, roomList.Count - 1)].GetComponent<Room>().CreateRoom(room, scale));
+                roomList[^1].transform.SetParent(parentFloor.transform);
+                //roomList[^1].transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+                roomList[^1].transform.GetChild(0).gameObject.SetActive(false);
                 level--;
                 break;
             case Status.doorGenerator:
@@ -55,6 +66,7 @@ public class RandomRooms : MonoBehaviour
                         door.transform.position = pattern.transform.position;
                         door.transform.LookAt(child.transform.position);
                         doorList.Add(Instantiate(door));
+                        doorList[^1].transform.SetParent(parentDoor.transform);
                     }
                 }
                 status++;
@@ -68,7 +80,8 @@ public class RandomRooms : MonoBehaviour
 
                 status++;
                 break;
-            case Status.A:
+            case Status.Render:
+
                 break;
             default:
                 break;

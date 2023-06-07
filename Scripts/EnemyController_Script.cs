@@ -43,6 +43,12 @@ public class EnemyController_Script : MonoBehaviour
         stats = GetComponentInChildren<StatsPattern_script>();
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        //Invoke(UpdateAgent(), 0.5f);
+    }
+
+    private void UpdateAgent()
+    {
         agent.speed = stats.speed;
         agent.stoppingDistance = stats.range;
     }
