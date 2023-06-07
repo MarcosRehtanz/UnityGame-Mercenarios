@@ -24,23 +24,15 @@ public class Room : MonoBehaviour
         {
             case RoomPosition.Top:
                 child.Add(Instantiate(room, transform.position + (Vector3.forward * scale), transform.rotation));
-                ClearList();
-                //freeRooms.Remove(rp);
                 return child[^1];
             case RoomPosition.Bottom:
                 child.Add(Instantiate(room, transform.position + (Vector3.back * scale), transform.rotation));
-                ClearList();
-                //freeRooms.Remove(rp);
                 return child[^1];
             case RoomPosition.Right:
                 child.Add(Instantiate(room, transform.position + (Vector3.right * scale), transform.rotation));
-                ClearList();
-                //freeRooms.Remove(RoomPosition.Right);
                 return child[^1];
             case RoomPosition.Left:
                 child.Add(Instantiate(room, transform.position + (Vector3.left * scale), transform.rotation));
-                ClearList();
-                //freeRooms.Remove(RoomPosition.Left);
                 return child[^1];
             default:
                 return child[^1].GetComponent<Room>().CreateRoom(room, scale);

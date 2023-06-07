@@ -42,6 +42,9 @@ public class EnemyController_Script : MonoBehaviour
         armShooting.Add(Instantiate(arm));
         stats = GetComponentInChildren<StatsPattern_script>();
         agent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent.speed = stats.speed;
+        agent.stoppingDistance = stats.range;
     }
 
     protected void ActionFollow()

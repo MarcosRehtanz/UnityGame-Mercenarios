@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2001360435480419201, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2001360435480419201, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
       propertyPath: m_LocalPosition.z
@@ -432,10 +432,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: 0
-  door: {fileID: 4399625806214696415, guid: 485db46bd1012bf4c936f8c281375286, type: 3}
   room: {fileID: 2651324206317477109, guid: 50e554964fb026d49b3a5059e2460d3f, type: 3}
+  door: {fileID: 4399625806214696415, guid: 485db46bd1012bf4c936f8c281375286, type: 3}
   roomList: []
   doorList: []
+  boss: {fileID: 0}
+  bossList:
+  - {fileID: 7566928965292440687, guid: fa157030854b98b4bb0b6196cd8d01b2, type: 3}
   level: 15
   scale: 100
 --- !u!4 &2027008795
