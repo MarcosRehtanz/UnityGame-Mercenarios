@@ -239,8 +239,8 @@ ModelImporter:
       name: JumpRoll
       takeName: Esqueleto|EsqueletoAction
       internalID: 8104370038777470113
-      firstFrame: 115
-      lastFrame: 160
+      firstFrame: 120
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

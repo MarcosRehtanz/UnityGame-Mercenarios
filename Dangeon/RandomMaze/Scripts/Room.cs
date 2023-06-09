@@ -67,7 +67,7 @@ public class Room : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-            transform.GetChild(0).gameObject.SetActive(false);
+            //transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 }

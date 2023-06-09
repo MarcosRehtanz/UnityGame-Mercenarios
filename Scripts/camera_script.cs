@@ -9,6 +9,8 @@ public class camera_script : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
         // Calculamos la distancia inicial entre la cámara y el jugador
         offset = transform.position - target.position;
     }

@@ -12,7 +12,7 @@ public class PlayerStats_Child_Pattern_script : StatsPattern_script
 
         fullHealt = 50;
         healt = 50;
-        speed = 10;
+        speed = 20;
         range = 5;
         defense = 5;
         damage = 7;
