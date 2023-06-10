@@ -48,6 +48,8 @@ public class PlayerController_script : MonoBehaviour
 
     private void Update()
     {
+
+        isGrouded = controller.isGrounded;
         GetAnimationTag("Fight");
 
         if (crowdControl.canMove)
@@ -149,8 +151,6 @@ public class PlayerController_script : MonoBehaviour
     }
     private void ActionJump()
     {
-        isGrouded = controller.isGrounded;
-
         // Resetea la velocidad vertical
         // Limitada por la gravedad minima
         if (isGrouded && playerVelocity.y < 0)
@@ -168,7 +168,11 @@ public class PlayerController_script : MonoBehaviour
     private void ActionGravity()
     {
         // Se aplica la gravedad
-        playerVelocity.y = gravityValue * Time.deltaTime;
+        if (isGrouded)
+            playerVelocity.y = gravityValue * Time.deltaTime;
+        else
+            playerVelocity.y += gravityValue * Time.deltaTime;
+
     }
     private void AnimationRoll()
     {
