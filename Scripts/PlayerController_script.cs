@@ -54,7 +54,7 @@ public class PlayerController_script : MonoBehaviour
 
         if (crowdControl.canMove)
         {
-            if (canMove)
+            if (canMove || animator.GetBool("CanMove"))
             {
                 if (Input.GetKeyDown(keyAttack))
                 {
@@ -109,8 +109,8 @@ public class PlayerController_script : MonoBehaviour
         }
 
         ActionJump();
-        if (armMeshCollider.enabled)
-            CollisionArm();
+        //if (armMeshCollider.enabled)
+        //    CollisionArm();
         ActionGravity();
         ActionRollMove();
         // Se aplica la velocidad vertical
@@ -215,7 +215,11 @@ public class PlayerController_script : MonoBehaviour
     /* * * * * * * * * * * 
      * C O L L I S I O N *
      * * * * * * * * * * */
-
+    #region
+    /// <summary>
+    /// CollisionArm is the Arm Area
+    /// </summary>
+    #endregion
     private void CollisionArm()
     {
         // Crear un raycast hacia adelante desde la posición y dirección deseada

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ public class Room : MonoBehaviour
     [SerializeField] private List<GameObject> doorList;
     private RoomPosition rp;
 
+    [field: SerializeField] public List<GameObject> enemiesList { get; private set; }
 
     public GameObject CreateRoom(GameObject room, float scale)
     {
@@ -53,9 +53,32 @@ public class Room : MonoBehaviour
         }
     }
 
-    public List<GameObject> GetChildList()
+    #region summary code
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="room">Asigna el nombre de la habitación.</param>
+    /// <param name="enemy">Asigna un enemigo de la lista.</param>
+    #endregion
+    public void AssignRoom(GameObject room, GameObject enemy)
     {
-        return child;
+        GameObject go = Instantiate(room);
+        go.transform.SetParent(transform.GetChild(0));
+        go.transform.position = go.transform.parent.transform.position;
+        Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+
+        go = transform.GetChild(0).transform.GetChild(1).gameObject;
+
+        for (int i = 0; i < go.transform.GetChild(0).transform.childCount; i++)
+        {
+            enemy.transform.position = go.transform.GetChild(0).transform.GetChild(i).transform.position;
+            enemiesList.Add(Instantiate(enemy));
+            enemiesList[^1].transform.SetParent(transform.GetChild(3));
+        }
+
+        //enemy.transform.position = transform.position;
+        //enemiesList.Add(Instantiate(enemy));
+        //enemiesList[^1].transform.SetParent(transform.GetChild(3));
     }
 
     public void AddDoorToList(GameObject door)
@@ -73,6 +96,11 @@ public class Room : MonoBehaviour
         }
     }
 
+    public List<GameObject> GetChildList()
+    {
+        return child;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -87,12 +115,12 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-            //transform.GetChild(0).gameObject.SetActive(false);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+    //        //transform.GetChild(0).gameObject.SetActive(false);
+    //    }
+    //}
 }

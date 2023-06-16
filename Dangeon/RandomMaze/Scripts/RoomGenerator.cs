@@ -23,6 +23,7 @@ public class RoomGenerator : MonoBehaviour
     [Header("Enemies")]
     [SerializeField] private GameObject boss;
     [SerializeField] private List<GameObject> bossList;
+    [SerializeField] private List<GameObject> enemiesList;
 
     [Header("Stats")]
     [SerializeField] private int level;
@@ -74,16 +75,32 @@ public class RoomGenerator : MonoBehaviour
                 status++;
                 break;
             case Status.RoomAsign:
-
                 // Asignar el tipo de habitaciones
+
+                /* * * * * *
+                 * B O S S *
+                 * * * * * */
                 GameObject go = Instantiate(prefabList[0]);
                 go.transform.SetParent(roomList[^1].transform.GetChild(0));
                 go.transform.position = go.transform.parent.transform.position;
-
+                Destroy(roomList[^1].transform.GetChild(0).transform.GetChild(0).gameObject);
 
                 int rN = Random.Range(0, bossList.Count - 1);
                 bossList[rN].transform.position = roomList[^1].transform.position;
                 boss = Instantiate(bossList[rN]);
+
+                /* * * * * * * *
+                 * T E S O U R *
+                 * * * * * * * */
+
+                /* * * * * * * * *
+                 * E N E M I E S *
+                 * * * * * * * * */
+                for (int i = 1; i < roomList.Count-2; i++)
+                {
+                    rN = Random.Range(0, enemiesList.Count - 1);
+                    roomList[i].GetComponent<Room>().AssignRoom(prefabList[1], enemiesList[rN]);
+                }
 
                 status++;
                 break;
