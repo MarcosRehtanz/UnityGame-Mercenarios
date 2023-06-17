@@ -1405,9 +1405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30e5600fd848eb4ca7d5416b010f8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: 0
-  playerPosition: {x: 0, y: 0, z: 0}
-  renderBox: {fileID: 0}
+  seed: 0
+  exp: 0
+  level: 15
+  scale: 75
   parentFloor: {fileID: 434978166}
   room: {fileID: 2651324206317477109, guid: 50e554964fb026d49b3a5059e2460d3f, type: 3}
   door: {fileID: 4399625806214696415, guid: 485db46bd1012bf4c936f8c281375286, type: 3}
@@ -1423,8 +1424,6 @@ MonoBehaviour:
   - {fileID: 7566928965292440687, guid: fa157030854b98b4bb0b6196cd8d01b2, type: 3}
   enemiesList:
   - {fileID: 4636442155415497889, guid: 0c8d1a5778053bc4e82689f0dc225370, type: 3}
-  level: 15
-  scale: 75
 --- !u!4 &2027008795
 Transform:
   m_ObjectHideFlags: 0

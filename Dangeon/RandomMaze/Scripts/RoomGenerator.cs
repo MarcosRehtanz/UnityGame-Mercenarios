@@ -6,11 +6,17 @@ using Unity.AI.Navigation;
 
 public class RoomGenerator : MonoBehaviour
 {
-    // [Header("Status")]
-    [SerializeField] private enum Status { roomGenerator, doorGenerator, RoomAsign, Render };
-    [SerializeField] private Status status;
-    [SerializeField] private Vector3 playerPosition;
-    [SerializeField] private BoxCollider renderBox;
+
+    [Header("Stats")]
+    [SerializeField] private int seed;
+    [SerializeField] private float exp;
+    [SerializeField] private int level;
+    [SerializeField] private float scale;
+
+    private enum Status { roomGenerator, doorGenerator, RoomAsign, Render };
+    private Status status;
+    private Vector3 playerPosition;
+    private BoxCollider renderBox;
 
     [Header("Room")]
     [SerializeField] private GameObject parentFloor;
@@ -25,14 +31,12 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> bossList;
     [SerializeField] private List<GameObject> enemiesList;
 
-    [Header("Stats")]
-    [SerializeField] private int level;
-    [SerializeField] private float scale;
-
-
     // Start is called before the first frame update
     void Start()
     {
+        seed = (int)Mathf.Floor(Random.value * exp);
+        Random.InitState(seed);
+
         room.transform.localScale = new(scale, 1, scale);
         roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
         roomList[^1].transform.SetParent(parentFloor.transform);

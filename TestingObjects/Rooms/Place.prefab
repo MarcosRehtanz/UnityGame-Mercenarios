@@ -399,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7935126438161754651}
   - component: {fileID: 7935126438161754648}
+  - component: {fileID: 2626892864180230051}
   m_Layer: 0
   m_Name: Fuente
   m_TagString: Untagged
@@ -435,10 +436,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 6
+  m_Radius: 5
   m_Height: 20
   m_Direction: 1
   m_Center: {x: 0, y: 4, z: 0}
+--- !u!208 &2626892864180230051
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935126438161754650}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 5, y: 10, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 4, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7935126438404595190
 GameObject:
   m_ObjectHideFlags: 0

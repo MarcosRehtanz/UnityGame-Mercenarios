@@ -13,6 +13,15 @@ public class Room : MonoBehaviour
 
     [field: SerializeField] public List<GameObject> enemiesList { get; private set; }
 
+
+    #region Crea una nueva habitación
+    /// <summary>
+    /// Crea una nueva habitación
+    /// </summary>
+    /// <param name="room">Habitación standar</param>
+    /// <param name="scale"></param>
+    /// <returns></returns>
+    #endregion
     public GameObject CreateRoom(GameObject room, float scale)
     {
         freeRooms.Clear();
@@ -52,10 +61,13 @@ public class Room : MonoBehaviour
                 return child[^1].GetComponent<Room>().CreateRoom(room, scale);
         }
     }
-
-    #region summary code
+    public void AddDoorToList(GameObject door)
+    {
+        doorList.Add(door);
+    }
+    #region Asigna el tipo de habitación
     /// <summary>
-    /// 
+    /// Assign the kind of room
     /// </summary>
     /// <param name="room">Asigna el nombre de la habitación.</param>
     /// <param name="enemy">Asigna un enemigo de la lista.</param>
@@ -80,12 +92,6 @@ public class Room : MonoBehaviour
         //enemiesList.Add(Instantiate(enemy));
         //enemiesList[^1].transform.SetParent(transform.GetChild(3));
     }
-
-    public void AddDoorToList(GameObject door)
-    {
-        doorList.Add(door);
-    }
-
     public void VisualFirtsRoom()
     {
         transform.GetChild(0).gameObject.SetActive(true);
@@ -105,6 +111,11 @@ public class Room : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            foreach (var enemy in enemiesList)
+            {
+                enemy.GetComponent<Enemy>().PlayerInRoom();
+            }
+
             transform.GetChild(0).gameObject.SetActive(true);
             transform.GetChild(2).gameObject.SetActive(true);
 
@@ -115,12 +126,14 @@ public class Room : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        //transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-    //        //transform.GetChild(0).gameObject.SetActive(false);
-    //    }
-    //}
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            foreach (var enemy in enemiesList)
+            {
+                enemy.GetComponent<Enemy>().PlayerInRoom();
+            }
+        }
+    }
 }
