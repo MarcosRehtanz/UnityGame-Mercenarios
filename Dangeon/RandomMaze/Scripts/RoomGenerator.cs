@@ -99,7 +99,8 @@ public class RoomGenerator : MonoBehaviour
                 for (int i = 1; i < roomList.Count-2; i++)
                 {
                     rN = Random.Range(0, enemiesList.Count - 1);
-                    roomList[i].GetComponent<Room>().AssignRoom(prefabList[1], enemiesList[rN]);
+                    int rPf = Mathf.FloorToInt(Random.value * (prefabList.Count-1)) + 1;
+                    roomList[i].GetComponent<Room>().AssignRoom(prefabList[rPf], enemiesList[rN]);
                 }
 
                 status++;
