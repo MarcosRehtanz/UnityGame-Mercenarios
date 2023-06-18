@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [Header("Agents")]
     [SerializeField] private Transform target;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private float distance;
+
 
     [SerializeField] private bool inRoom;
 
@@ -20,9 +22,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        distance = Vector3.Distance(transform.position, target.transform.position);
         if (inRoom)
         {
-                agent.SetDestination(target.position);
+            agent.SetDestination(target.position);
+
+            if (distance < agent.stoppingDistance && Random.value < 0.01f)
+                TPBeforePlayer();
         }
         else
         {
@@ -38,5 +44,17 @@ public class Enemy : MonoBehaviour
     public void PlayerInRoom()
     {
         inRoom = !inRoom;
+    }
+
+
+    //Teletransportarse detras del jugador
+    public void TPBeforePlayer ()
+    {
+        Vector3 forward = target.transform.forward;
+        forward.y = 0;
+        Vector3 position = target.transform.position;
+        position.y = transform.position.y;
+
+        gameObject.transform.position = position - forward * 7;
     }
 }

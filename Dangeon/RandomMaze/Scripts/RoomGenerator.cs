@@ -8,7 +8,7 @@ public class RoomGenerator : MonoBehaviour
 {
 
     [Header("Stats")]
-    [SerializeField] private int seed;
+    //private int seed;
     [SerializeField] private float exp;
     [SerializeField] private int level;
     [SerializeField] private float scale;
@@ -34,8 +34,8 @@ public class RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        seed = (int)Mathf.Floor(Random.value * exp);
-        Random.InitState(seed);
+        //seed = (int)Mathf.Floor(Random.value * exp);
+        //Random.InitState(seed);
 
         room.transform.localScale = new(scale, 1, scale);
         roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
