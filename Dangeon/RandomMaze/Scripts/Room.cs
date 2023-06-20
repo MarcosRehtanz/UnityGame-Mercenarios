@@ -35,9 +35,11 @@ public class Room : MonoBehaviour
         }
 
         if (freeRooms.Count > 0)
-            rp = freeRooms[Random.Range(0, freeRooms.Count - 1)];
-        else
+        {
+            rp = freeRooms[Mathf.FloorToInt(Random.value * (freeRooms.Count - 1))];
+        } else {
             rp = RoomPosition.def;
+        }
 
         switch (rp)
         {
@@ -58,6 +60,10 @@ public class Room : MonoBehaviour
                 child[^1].transform.SetParent(transform);
                 return child[^1];
             default:
+                /* E R R O R ! ! !
+                 * Al generar una habitación a partir del hijo si el ultimo de la generación no posee hijos
+                 * y no tiene espacio libre para generarse, consederá un error al no poseer lugar disponible.  
+                 */
                 return child[^1].GetComponent<Room>().CreateRoom(room, scale);
         }
     }

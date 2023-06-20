@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using UnityEngine.SceneManagement;
 
 public class RoomGenerator : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class RoomGenerator : MonoBehaviour
     private enum Status { roomGenerator, doorGenerator, RoomAsign, Render };
     private Status status;
     private Vector3 playerPosition;
-    private BoxCollider renderBox;
 
     [Header("Room")]
     [SerializeField] private GameObject parentFloor;
@@ -34,16 +34,8 @@ public class RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //seed = (int)Mathf.Floor(Random.value * exp);
-        //Random.InitState(seed);
-
         room.transform.localScale = new(scale, 1, scale);
-        roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
-        roomList[^1].transform.SetParent(parentFloor.transform);
-        level--;
-
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        renderBox = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -52,13 +44,27 @@ public class RoomGenerator : MonoBehaviour
         {
             case Status.roomGenerator:
 
-                roomList.Add(roomList[Random.Range(0, roomList.Count - 1)].GetComponent<Room>().CreateRoom(room, scale));
-                //roomList[^1].transform.SetParent(parentFloor.transform);
-                //roomList[^1].transform.GetChild(0).gameObject.SetActive(false);
+                // Si la lista de las salas estan vacias se crea la sala inicial,
+                // luego comienza un ciclo recursivo con el resto de las salas
+                if (roomList.Count > 0)
+                {
+                    int num = Mathf.FloorToInt(Random.value * (roomList.Count - 1));
+                    roomList.Add(roomList[num].GetComponent<Room>().CreateRoom(room, scale));
+                    //roomList[^1].transform.SetParent(parentFloor.transform);
+                    //roomList[^1].transform.GetChild(0).gameObject.SetActive(false);
 
-                level--;
-                if (level <= 0)
-                    status++;
+                    level--;
+                    if (level <= 0)
+                    {
+                        status++;
+                    }
+                } else
+                {
+                    roomList.Add(Instantiate(room, Vector3.zero, room.transform.rotation));
+                    roomList[^1].transform.SetParent(parentFloor.transform);
+                    level--;
+                }
+
                 break;
             case Status.doorGenerator:
                 foreach (GameObject pattern in roomList)
@@ -87,6 +93,7 @@ public class RoomGenerator : MonoBehaviour
                 GameObject go = Instantiate(prefabList[0]);
                 go.transform.SetParent(roomList[^1].transform.GetChild(0));
                 go.transform.position = go.transform.parent.transform.position;
+                //Debug.Log(roomList[^1].transform.GetChild(0).transform.GetChild(0).gameObject.name);
                 Destroy(roomList[^1].transform.GetChild(0).transform.GetChild(0).gameObject);
 
                 int rN = Random.Range(0, bossList.Count - 1);
@@ -110,7 +117,10 @@ public class RoomGenerator : MonoBehaviour
                 status++;
                 break;
             case Status.Render:
-
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
                 break;
             default:
                 break;

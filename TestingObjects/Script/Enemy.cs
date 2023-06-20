@@ -27,8 +27,8 @@ public class Enemy : MonoBehaviour
         {
             agent.SetDestination(target.position);
 
-            if (distance < agent.stoppingDistance && Random.value < 0.01f)
-                TPBeforePlayer();
+            //if (distance < agent.stoppingDistance && Random.value < 0.01f)
+            //    TPBeforePlayer();
         }
         else
         {
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     #endregion
     public void PlayerInRoom()
     {
-        inRoom = !inRoom;
+        inRoom = true;
     }
 
 
