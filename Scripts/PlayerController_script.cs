@@ -109,8 +109,8 @@ public class PlayerController_script : MonoBehaviour
         }
 
         ActionJump();
-        //if (armMeshCollider.enabled)
-        //    CollisionArm();
+        if (!canMove)
+            CollisionArm();
         ActionGravity();
         ActionRollMove();
         // Se aplica la velocidad vertical
@@ -192,8 +192,12 @@ public class PlayerController_script : MonoBehaviour
     }
     private void ActionBasicAttack()
     {
+
+
+
         canMove = false;
         armMeshCollider.enabled = true;
+
         animator.SetBool("Walk", false);
 
         animator.SetInteger("Fight", 1);
@@ -222,8 +226,13 @@ public class PlayerController_script : MonoBehaviour
     #endregion
     private void CollisionArm()
     {
+        Vector3 pos = transform.position;
+        Vector3 forward = transform.forward;
+        forward.y = transform.position.y;
+        Vector3 v3 = pos + forward * 5;
+
         // Crear un raycast hacia adelante desde la posición y dirección deseada
-        Ray ray = new((arm.transform.forward * 3 + arm.transform.position), transform.forward);
+        Ray ray = new(pos, forward);
 
         // Realizar el raycast contra el Mesh Collider
         RaycastHit[] hit = Physics.SphereCastAll(ray, areaDamage);
@@ -235,9 +244,8 @@ public class PlayerController_script : MonoBehaviour
             {
                 if (item.collider.gameObject.CompareTag("Enemy"))
                 {
-                    StatsPattern_script stp = item.collider.GetComponentInChildren<StatsPattern_script>();
-                    stp.ImpactDamage(stats.damage);
-                    armMeshCollider.enabled = false;
+                    Enemy enemy = item.collider.GetComponentInChildren<Enemy>();
+                    enemy.ImpactDamage(stats.damage);
                 }
             }
         }
@@ -268,10 +276,17 @@ public class PlayerController_script : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Arm Collider
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere((arm.transform.forward * 3 + arm.transform.position), areaDamage);
-        
+        if (!canMove)
+        {
+            Vector3 pos = transform.position;
+            Vector3 forward = transform.forward;
+            forward.y = transform.position.y;
+            Vector3 v3 = pos + forward * areaDamage;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(v3, areaDamage);
+        }
+
         // Area to attack
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, areaDetection);

@@ -90,6 +90,8 @@ public class Room : MonoBehaviour
         for (int i = 0; i < go.transform.GetChild(0).transform.childCount; i++)
         {
             enemy.transform.position = go.transform.GetChild(0).transform.GetChild(i).transform.position;
+            //GameObject gameObject = Instantiate(enemy);
+            //gameObject.transform.SetParent(transform.GetChild(3));
             enemiesList.Add(Instantiate(enemy));
             enemiesList[^1].transform.SetParent(transform.GetChild(3));
         }
@@ -117,9 +119,13 @@ public class Room : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach (var enemy in enemiesList)
+            if (enemiesList.Count > 0)
             {
-                enemy.GetComponent<Enemy>().PlayerInRoom();
+                foreach (var enemy in enemiesList)
+                {
+                    enemy.GetComponent<Enemy>().PlayerInRoom();
+                }
+                enemiesList.Clear();
             }
 
             transform.GetChild(0).gameObject.SetActive(true);
@@ -138,7 +144,7 @@ public class Room : MonoBehaviour
         {
             foreach (var enemy in enemiesList)
             {
-                enemy.GetComponent<Enemy>().PlayerInRoom();
+                //enemy.GetComponent<Enemy>().PlayerInRoom();
             }
         }
     }

@@ -600,6 +600,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1192770120899133730, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
+      propertyPath: statsCanMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192770120899133730, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
       propertyPath: areaDetection
       value: 7
       objectReference: {fileID: 0}
@@ -626,14 +630,6 @@ PrefabInstance:
     - target: {fileID: 1192770120899133755, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1917892957891944591, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
-      propertyPath: m_Height
-      value: 5.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1917892957891944591, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
-      propertyPath: m_Center.y
-      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 2001360435480419201, guid: 2fe3f9c0e241cb64e9e9d0e3b3cea415, type: 3}
       propertyPath: m_RootOrder
