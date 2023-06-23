@@ -5,9 +5,9 @@ using UnityEngine;
 public class Stats
 {
     public float healt { get; private set; }
-    private float damage;
-    private float movingSpeed;
-    private float attackSpeed;
+    public float damage { get; private set; }
+    public float movingSpeed { get; private set; }
+    public float attackSpeed { get; private set; }
 
     #region constructor
     /// <summary>

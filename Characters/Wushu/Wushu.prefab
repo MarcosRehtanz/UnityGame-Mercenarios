@@ -702,7 +702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1192770120899133733}
-  stats: {fileID: 5294632028483365446}
   crowdControl: {fileID: 5294632028483365447}
   animator: {fileID: 1192770120899133732}
   arm: {fileID: 5055271036364443552}
@@ -1058,6 +1057,7 @@ GameObject:
   - component: {fileID: 8436999368118500846}
   - component: {fileID: 5617444876394655802}
   - component: {fileID: 6177738994636831955}
+  - component: {fileID: 9082548524465395904}
   m_Layer: 0
   m_Name: controlador mechon.002
   m_TagString: Untagged
@@ -1130,6 +1130,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9082548524465395904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137842300575202915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e61681b97e8d54c9c7a1799cc85d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  crowdControl: {fileID: 0}
+  animator: {fileID: 0}
+  arm: {fileID: 0}
+  armMeshCollider: {fileID: 0}
+  areaDamage: 0
+  areaDetection: 0
+  jumpHeight: 1
+  gravityValue: -49.050003
+  rollForce: 2.25
+  isGrouded: 0
+  statsCanMove: 0
+  keyJump: 0
+  keyAttack: 0
+  keyRoll: 0
 --- !u!1 &3263940509420000222
 GameObject:
   m_ObjectHideFlags: 0

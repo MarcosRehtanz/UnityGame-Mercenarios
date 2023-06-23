@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController_script : MonoBehaviour
 {
     [Header("Controllers")]
-    [SerializeField] private CharacterController controller;
-    [SerializeField] private StatsPattern_script stats;
     [SerializeField] private CrowdControl crowdControl;
-    [SerializeField] private Animator animator;
+    private CharacterController characterController;
+    private Stats stats;
+    private Action action;
+    private Animator animator;
 
     [Header("Arm")]
     [SerializeField] private GameObject arm;
@@ -29,96 +30,148 @@ public class PlayerController_script : MonoBehaviour
     [SerializeField] private KeyCode keyRoll;
 
     [Header("Attributes")]
-    private Vector3 move;
     private Vector3 playerVelocity;
     private bool rolling;
     private bool canMove;
 
     [Header("Animator")]
     private string animationName;
-    private float animationTime;
 
 
     private void Start()
     {
-        stats.SetcrowdControl(crowdControl);
+        //stats.SetcrowdControl(crowdControl);
+        stats = new Stats(20, 1, 20, 1);
+        action = new Action(
+            gameObject.GetComponent<CharacterController>(),
+            gameObject,
+            gameObject.GetComponent<Animator>());
+
+        animator = gameObject.GetComponent<Animator>();
+        characterController = gameObject.GetComponent<CharacterController>();
+
         rolling = false;
         canMove = true;
     }
 
     private void Update()
     {
+        action.Gravity();
+        Run();
+        Attack();
+    }
 
-        isGrouded = controller.isGrounded;
-        GetAnimationTag("Fight");
-
-        if (crowdControl.canMove)
+    #region Run
+    /// <summary>
+    /// Method for to run
+    /// </summary>
+    #endregion
+    protected void Run()
+    {
+        if (!animator.GetBool("Attack"))
         {
-            if (canMove || animator.GetBool("CanMove"))
-            {
-                if (Input.GetKeyDown(keyAttack))
-                {
-                    EnemyDirection();
-                    ActionBasicAttack();
-                } // ATTACK
-                else if (Input.GetKeyDown(keyRoll))
-                {
-                    AnimationRoll();
-                } // ROLL
-                else if (animationName != "Fight_FirstPart")
-                {
-                    ActionMove();
-                    ActionJump();
-                } //MOVE or JUMP
+            action.Run(stats.movingSpeed);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
+    }
+    #region Attack
+    /// <summary>
+    /// Method for Attack
+    /// </summary>
+    #endregion
+    protected void Attack()
+    {
+        if (Input.GetKeyDown(keyAttack))
+        {
+            EnemyDirection();
+            ImpactCollision();
+            action.Attack(stats.attackSpeed+1.5f);
+        }
+    }
 
-            }
-            else
+    #region Enemy Detection Collider
+    /// <summary>
+    /// Se direcciona hacia donde esta el enemigo mas cercano dentro de un area
+    /// </summary>
+    #endregion
+    private void EnemyDirection()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+
+        RaycastHit[] raycastHits = Physics.SphereCastAll(ray, areaDetection);
+
+        if (raycastHits.Length > 0)
+        {
+            foreach (RaycastHit item in raycastHits)
             {
-                bool boolRoll = animator.GetBool("JumpRoll");
-                switch (animationName)
+                if (item.collider.CompareTag("Enemy") &&
+                    Vector3.Distance(item.collider.transform.position, transform.position) < areaDetection)
                 {
-                    case "Fight_FirstKick":
-                        ActionContinueAttack(2);
-                        break;
-                    case "Fight_SecondKick":
-                        ActionContinueAttack(3);
-                        break;
-                    case "Fight_ThirdKick":
-                        animator.SetInteger("Fight", 0);
-                        break;
-                    case "JumpRoll":
-                        animator.SetBool("JumpRoll", false);
-                        break;
-                    case "Idle":
-                        if (animator.GetInteger("Fight") != 1 && !boolRoll)
-                        {
-                            canMove = true;
-                            rolling = false;
-                            armMeshCollider.enabled = false;
-                        }
-                        break;
-                    case "Walk":
-                        break;
-                    default:
-                        canMove = true;
-                        armMeshCollider.enabled = false;
-                        animator.SetInteger("Fight", 0);
-                        break;
-                } // When is ATTAKING look the animations to the next attack or roll
+                    Vector3 targetPosition = item.collider.transform.position;
+                    targetPosition.y = transform.position.y;
+                    transform.LookAt(targetPosition);
+                    Debug.Log("Objeto detectado: " + item.collider.gameObject.name);
+                }
+            }
+
+        }
+    }
+    #region Damage Collider
+    /// <summary>
+    /// CollisionArm is the Arm Area
+    /// </summary>
+    #endregion
+    private void ImpactCollision()
+    {
+        Vector3 pos = transform.position;
+        Vector3 forward = transform.forward;
+        forward.y = transform.position.y;
+
+        // Crear un raycast hacia adelante desde la posición y dirección deseada
+        Ray ray = new(pos, forward);
+
+        // Realizar el raycast contra el Mesh Collider
+        RaycastHit[] hit = Physics.SphereCastAll(ray, areaDamage);
+
+        // Verificar si el raycast colisionó con algo
+        if ((hit.Length > 0))
+        {
+            foreach (RaycastHit item in hit)
+            {
+                if (item.collider.gameObject.CompareTag("Enemy"))
+                {
+                    Enemy enemy = item.collider.GetComponentInChildren<Enemy>();
+                    enemy.ImpactDamage(stats.damage);
+                }
             }
         }
 
-        ActionJump();
-        if (!canMove)
-            CollisionArm();
-        ActionGravity();
-        ActionRollMove();
-        // Se aplica la velocidad vertical
-        controller.Move(playerVelocity * Time.deltaTime);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        try
+        {
+            if (animator.GetBool("Attack"))
+            {
+                Vector3 pos = transform.position;
+                Vector3 forward = transform.forward;
+                forward.y = transform.position.y;
+                Vector3 v3 = pos + forward * areaDamage;
 
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(v3, areaDamage);
 
-        animationName = GetAnimationName();
-        animationTime = animator.GetCurrentAnimatorStateInfo(0).length;
+            }
+        }
+        catch (System.Exception) {}
+
+        // Area to attack
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, areaDetection);
     }
 
     /* * * * * * * *
@@ -126,29 +179,7 @@ public class PlayerController_script : MonoBehaviour
      * P L A Y E R *
      * * * * * * * */
 
-    private void ActionMove ()
-    {
-        // Mueve al jugador segun los botones
-        move = Input.GetAxis("Horizontal") * Camera.main.transform.right +
-               Input.GetAxis("Vertical") * Camera.main.transform.forward;
-        move.y = 0;
-        move = Vector3.ClampMagnitude(move, 1);
-        controller.Move(move * stats.GetSpeed() * Time.deltaTime);
 
-        // Rota segun las direccion de movimiento
-        if (move != Vector3.zero)
-        {
-            transform.forward = move;
-
-            // Animación de caminar
-            animator.SetBool("Walk", true);
-        }
-        else
-        {
-            animator.SetBool("Walk", false);
-        }
-
-    }
     private void ActionJump()
     {
         // Resetea la velocidad vertical
@@ -165,15 +196,6 @@ public class PlayerController_script : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
     }
-    private void ActionGravity()
-    {
-        // Se aplica la gravedad
-        if (isGrouded)
-            playerVelocity.y = gravityValue * Time.deltaTime;
-        else
-            playerVelocity.y += gravityValue * Time.deltaTime;
-
-    }
     private void AnimationRoll()
     {
         canMove = false;
@@ -187,14 +209,11 @@ public class PlayerController_script : MonoBehaviour
     {
         if (!canMove && rolling)
         {
-            controller.Move(rollForce * stats.GetSpeed() * Time.deltaTime * transform.forward);
+            characterController.Move(rollForce * stats.movingSpeed * Time.deltaTime * transform.forward);
         }
     }
     private void ActionBasicAttack()
     {
-
-
-
         canMove = false;
         armMeshCollider.enabled = true;
 
@@ -219,78 +238,7 @@ public class PlayerController_script : MonoBehaviour
     /* * * * * * * * * * * 
      * C O L L I S I O N *
      * * * * * * * * * * */
-    #region
-    /// <summary>
-    /// CollisionArm is the Arm Area
-    /// </summary>
-    #endregion
-    private void CollisionArm()
-    {
-        Vector3 pos = transform.position;
-        Vector3 forward = transform.forward;
-        forward.y = transform.position.y;
-        Vector3 v3 = pos + forward * 5;
 
-        // Crear un raycast hacia adelante desde la posición y dirección deseada
-        Ray ray = new(pos, forward);
-
-        // Realizar el raycast contra el Mesh Collider
-        RaycastHit[] hit = Physics.SphereCastAll(ray, areaDamage);
-
-        // Verificar si el raycast colisionó con algo
-        if ((hit.Length > 0))
-        {
-            foreach (RaycastHit item in hit)
-            {
-                if (item.collider.gameObject.CompareTag("Enemy"))
-                {
-                    Enemy enemy = item.collider.GetComponentInChildren<Enemy>();
-                    enemy.ImpactDamage(stats.damage);
-                }
-            }
-        }
-
-    }
-    private void EnemyDirection()
-    {
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        RaycastHit[] raycastHits = Physics.SphereCastAll(ray, areaDetection);
-
-        if (raycastHits.Length > 0)
-        {
-            foreach (RaycastHit item in raycastHits)
-            {
-                if (item.collider.CompareTag("Enemy") &&
-                    Vector3.Distance(item.collider.transform.position, transform.position) < areaDetection)
-                {
-                    Vector3 targetPosition = item.collider.transform.position;
-                    targetPosition.y = transform.position.y;
-                    transform.LookAt(targetPosition);
-                    Debug.Log("Objeto detectado: " + item.collider.gameObject.name);
-                }
-            }
-                
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (!canMove)
-        {
-            Vector3 pos = transform.position;
-            Vector3 forward = transform.forward;
-            forward.y = transform.position.y;
-            Vector3 v3 = pos + forward * areaDamage;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(v3, areaDamage);
-        }
-
-        // Area to attack
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, areaDetection);
-    }
 
     /* * * * * * * * * * * 
      * A N I M A T I O N *
@@ -345,13 +293,13 @@ public class PlayerController_script : MonoBehaviour
     
     public void Feedback (string typeOfControl, float damage, Vector3 v3)
     {
-        controller.Move(damage * Time.deltaTime * v3);
+        characterController.Move(damage * Time.deltaTime * v3);
         stats.ImpactDamage(damage);
         CrowdControl(typeOfControl);
     }
     public void Feedback (float damage, Vector3 v3)
     {
-        controller.Move(damage * Time.deltaTime * v3);
+        characterController.Move(damage * Time.deltaTime * v3);
         stats.ImpactDamage(damage);
     }
 }

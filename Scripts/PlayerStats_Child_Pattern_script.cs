@@ -15,7 +15,7 @@ public class PlayerStats_Child_Pattern_script : StatsPattern_script
         speed = 20;
         range = 5;
         defense = 5;
-        damage = 7;
+        damage = 1;
     }
 
     protected override void Update()

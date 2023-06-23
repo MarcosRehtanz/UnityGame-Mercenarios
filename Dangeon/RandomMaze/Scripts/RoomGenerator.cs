@@ -107,7 +107,7 @@ public class RoomGenerator : MonoBehaviour
                 /* * * * * * * * *
                  * E N E M I E S *
                  * * * * * * * * */
-                for (int i = 0; i < roomList.Count-2; i++)
+                for (int i = 1; i < roomList.Count-2; i++)
                 {
                     rN = Random.Range(0, enemiesList.Count - 1);
                     int rPf = Mathf.FloorToInt(Random.value * (prefabList.Count-1)) + 1;

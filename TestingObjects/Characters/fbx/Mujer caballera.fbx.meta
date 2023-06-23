@@ -1,0 +1,524 @@
+fileFormatVersion: 2
+guid: 6b17720052076aa4f8980bb7eda24574
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperArm' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - Armature
+    - Armature/Centro
+    - Armature/Centro/Torso bajo
+    - Armature/Centro/Torso bajo/Torso alto
+    - Armature/Centro/Torso bajo/Torso alto/Cuello
+    - Armature/Centro/Torso bajo/Torso alto/Cuello/Cabeza
+    - Armature/Centro/Torso bajo/Torso alto/Cuello/Cabeza/Cabeza_end
+    - Armature/L. Brazo
+    - Armature/L. Brazo/L. Ante brazo
+    - Armature/L. Brazo/L. Ante brazo/L. Mano
+    - Armature/L. Brazo/L. Ante brazo/L. Mano/L. Dedos
+    - Armature/L. Brazo/L. Ante brazo/L. Mano/L. Dedos/L. DedosPunta
+    - Armature/L. Brazo/L. Ante brazo/L. Mano/L. Dedos/L. DedosPunta/L. DedosPunta_end
+    - Armature/L. pierna
+    - Armature/L. pierna/L. pierna baja
+    - Armature/L. pierna/L. pierna baja/L. planta
+    - Armature/L. pierna/L. pierna baja/L. planta/L. dedos pie
+    - Armature/L. pierna/L. pierna baja/L. planta/L. dedos pie/L. dedos pie_end
+    - Armature/L. Pulgar
+    - Armature/L. Pulgar/L. pulgar.
+    - Armature/L. Pulgar/L. pulgar./L. pulgar._end
+    - Armature/Mechon.003
+    - Armature/Mechon.007
+    - Armature/Mechon.008
+    - Armature/Mechon.009
+    - Armature/Mechon.010
+    - Armature/Mechon.011
+    - Armature/Mechon.012
+    - Armature/R. Brazo
+    - Armature/R. Brazo/R. Ante brazo
+    - Armature/R. Brazo/R. Ante brazo/R. Mano
+    - Armature/R. Brazo/R. Ante brazo/R. Mano/R. Dedos
+    - Armature/R. Brazo/R. Ante brazo/R. Mano/R. Dedos/R. DedosPunta
+    - Armature/R. Brazo/R. Ante brazo/R. Mano/R. Dedos/R. DedosPunta/R. DedosPunta_end
+    - Armature/R. pierna
+    - Armature/R. pierna/R. pierna baja
+    - Armature/R. pierna/R. pierna baja/R. planta
+    - Armature/R. pierna/R. pierna baja/R. planta/R. dedos pie
+    - Armature/R. pierna/R. pierna baja/R. planta/R. dedos pie/R. dedos pie_end
+    - Armature/R. Pulgar
+    - Armature/R. Pulgar/R. pulgar.
+    - Armature/R. Pulgar/R. pulgar./R. pulgar._end
+    - ArmatureEspada
+    - ArmatureEspada/Mango
+    - ArmatureEspada/Mango/espada1
+    - ArmatureEspada/Mango/espada1/espada2
+    - ArmatureEspada/Mango/espada1/espada2/espada3
+    - ArmatureEspada/Mango/espada1/espada2/espada3/espada 4
+    - ArmatureEspada/Mango/espada1/espada2/espada3/espada 4/espada 4_end
+    - Brazaletes
+    - Cabellera
+    - cINTURON
+    - Cube
+    - Hombreras
+    - Pantalon
+    - personaje
+    - REMERA
+    - Sphere
+    - Zapato
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      internalID: 4781951162920444690
+      firstFrame: 0
+      lastFrame: 228
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureEspada|ArmatureEspadaAction
+      takeName: ArmatureEspada|ArmatureEspadaAction
+      internalID: -6983375633472931048
+      firstFrame: 0
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 1
+    maxBonesPerVertex: 255
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Mujer caballera(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: Mujer caballera(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Centro
+      parentName: Armature
+      position: {x: -0, y: -0.0013169684, z: 0.010213691}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Torso bajo
+      parentName: Centro
+      position: {x: -0, y: 0.0012985086, z: 0}
+      rotation: {x: 0.12349714, y: 0.1934695, z: 0.005704534, w: 0.9732859}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Torso alto
+      parentName: Torso bajo
+      position: {x: -1.3969838e-11, y: 0.0017811408, z: -1.0710209e-10}
+      rotation: {x: -0.17992806, y: 0.043766018, z: -0.0030732746, w: 0.9827009}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+    - name: Cuello
+      parentName: Torso alto
+      position: {x: 3.7252902e-11, y: 0.0021603317, z: -3.8649886e-10}
+      rotation: {x: 0.043055125, y: -0.0019656569, z: 0.019614186, w: 0.99887824}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: Cabeza
+      parentName: Cuello
+      position: {x: -0, y: 0.0008411083, z: -1.9557773e-10}
+      rotation: {x: 0.05273649, y: -0.22583364, z: -0.065691754, w: 0.9705167}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Cabeza_end
+      parentName: Cabeza
+      position: {x: -0, y: 0.0015857959, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mechon.003
+      parentName: Cabeza
+      position: {x: -0.0011439257, y: 0.0001372282, z: 0.002576093}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.007
+      parentName: Cabeza
+      position: {x: -0.0013412843, y: 0.0002877236, z: 0.0026023658}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.008
+      parentName: Cabeza
+      position: {x: -0.0010527712, y: 0.000041703053, z: 0.0025768767}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.009
+      parentName: Cabeza
+      position: {x: -0.0012742012, y: -0.000054111864, z: 0.002579407}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.010
+      parentName: Cabeza
+      position: {x: -0.0012906748, y: 0.0001157339, z: 0.0024961908}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.011
+      parentName: Cabeza
+      position: {x: -0.00045220845, y: -0.000050669187, z: 0.0024877924}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Mechon.012
+      parentName: Cabeza
+      position: {x: -0.0015719549, y: -0.000059253798, z: 0.0025771845}
+      rotation: {x: -0.45778656, y: -0.43870956, z: 0.57913095, w: 0.51241857}
+      scale: {x: 0.016195128, y: 0.016195128, z: 0.016195128}
+    - name: Cabellera
+      parentName: Cabeza
+      position: {x: 0.0004464403, y: -0.0039876904, z: 0.000054898912}
+      rotation: {x: -0.7344267, y: -0.023115933, z: 0.010595366, w: 0.6782115}
+      scale: {x: 0.35762617, y: 0.3576262, z: 0.3576261}
+    - name: L. Brazo
+      parentName: Armature
+      position: {x: -0.0014304977, y: -0.0022675053, z: 0.014325974}
+      rotation: {x: -0.18109734, y: 0.85493577, z: -0.47898176, w: -0.08285562}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: L. Ante brazo
+      parentName: L. Brazo
+      position: {x: 3.259629e-10, y: 0.00347526, z: 1.0244548e-10}
+      rotation: {x: 0.435464, y: 0.13159174, z: -0.02933839, w: 0.89005286}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L. Mano
+      parentName: L. Ante brazo
+      position: {x: 8.381903e-11, y: 0.0023570042, z: 1.862645e-10}
+      rotation: {x: 0.070718884, y: 0.01587828, z: -0.10703281, w: 0.99161017}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: L. Dedos
+      parentName: L. Mano
+      position: {x: -4.4703483e-10, y: 0.00093557354, z: 2.9802322e-10}
+      rotation: {x: -0.058772277, y: 0.030565312, z: 0.06030927, w: 0.99597913}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
+    - name: L. DedosPunta
+      parentName: L. Dedos
+      position: {x: 6.3329936e-10, y: 0.00036730975, z: -1.862645e-10}
+      rotation: {x: -0.038851414, y: 0.009644071, z: 0.1253124, w: 0.99130946}
+      scale: {x: 1, y: 0.9999998, z: 1.0000001}
+    - name: L. DedosPunta_end
+      parentName: L. DedosPunta
+      position: {x: -0, y: 0.00032744612, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L. pierna
+      parentName: Armature
+      position: {x: -0.001127458, y: -0.0012557544, z: 0.00983962}
+      rotation: {x: 0.5988195, y: -0.5192997, z: 0.57380325, w: -0.2061381}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: L. pierna baja
+      parentName: L. pierna
+      position: {x: -3.352761e-10, y: 0.0044777053, z: -7.4505804e-11}
+      rotation: {x: 0.062342603, y: 0.04254173, z: 0.20414674, w: 0.97602654}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: L. planta
+      parentName: L. pierna baja
+      position: {x: 2.2817402e-10, y: 0.0055703796, z: -7.4505804e-11}
+      rotation: {x: -0.009037989, y: -0.026805835, z: -0.59421545, w: 0.8038083}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: L. dedos pie
+      parentName: L. planta
+      position: {x: -0, y: 0.0010119748, z: -3.5855918e-10}
+      rotation: {x: -0.0009201614, y: 0.000000007451222, z: -0.016242025, w: 0.9998677}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: L. dedos pie_end
+      parentName: L. dedos pie
+      position: {x: -0, y: 0.00078311324, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L. Pulgar
+      parentName: Armature
+      position: {x: -0.0037217622, y: -0.0020016942, z: 0.009068247}
+      rotation: {x: 0.34774467, y: -0.30153987, z: 0.8812379, w: -0.10755093}
+      scale: {x: 0.99999994, y: 0.9999996, z: 0.9999998}
+    - name: L. pulgar.
+      parentName: L. Pulgar
+      position: {x: 7.4505804e-11, y: 0.00036043877, z: -6.705522e-10}
+      rotation: {x: -0.2378706, y: -0.0030258212, z: 0.044926263, w: 0.9702526}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L. pulgar._end
+      parentName: L. pulgar.
+      position: {x: -0, y: 0.0003055745, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R. Brazo
+      parentName: Armature
+      position: {x: 0.0012011878, y: -0.00091999536, z: 0.014497047}
+      rotation: {x: 0.25685903, y: 0.31455985, z: -0.74015015, w: 0.53596026}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: R. Ante brazo
+      parentName: R. Brazo
+      position: {x: 2.2351741e-10, y: 0.003475261, z: -7.0780515e-10}
+      rotation: {x: 0.5938031, y: -0.25738958, z: 0.2437901, w: 0.7222983}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: R. Mano
+      parentName: R. Ante brazo
+      position: {x: -1.4901161e-10, y: 0.002357003, z: -4.842877e-10}
+      rotation: {x: 0.20440702, y: -0.055070553, z: 0.20405136, w: 0.9557971}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: R. Dedos
+      parentName: R. Mano
+      position: {x: -7.45058e-10, y: 0.00093557435, z: 3.7252902e-11}
+      rotation: {x: -0.2426292, y: 0.02057575, z: -0.6373669, w: 0.73107535}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: R. DedosPunta
+      parentName: R. Dedos
+      position: {x: -6.705522e-10, y: 0.00037379444, z: 5.937181e-11}
+      rotation: {x: -0.06023243, y: -0.00016335628, z: -0.08589861, w: 0.9944815}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R. DedosPunta_end
+      parentName: R. DedosPunta
+      position: {x: -0, y: 0.00031019954, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R. pierna
+      parentName: Armature
+      position: {x: 0.001127458, y: -0.0012557544, z: 0.00983962}
+      rotation: {x: 0.60235965, y: 0.572437, z: -0.48601127, w: -0.27068773}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: R. pierna baja
+      parentName: R. pierna
+      position: {x: -2.2351741e-10, y: 0.0044777053, z: 2.2351741e-10}
+      rotation: {x: 0.04177337, y: 0.0963178, z: -0.29213244, w: 0.950598}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: R. planta
+      parentName: R. pierna baja
+      position: {x: -9.3132255e-12, y: 0.00557038, z: -1.1757947e-10}
+      rotation: {x: 0.11176949, y: -0.03179539, z: 0.63255775, w: 0.76574624}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: R. dedos pie
+      parentName: R. planta
+      position: {x: 3.7252902e-11, y: 0.0010119743, z: 9.3132255e-12}
+      rotation: {x: -0.049295574, y: -0.03649079, z: 0.18170603, w: 0.9814384}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: R. dedos pie_end
+      parentName: R. dedos pie
+      position: {x: -0, y: 0.00078311324, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R. Pulgar
+      parentName: Armature
+      position: {x: 0.004957433, y: -0.0020036243, z: 0.01604374}
+      rotation: {x: 0.6638895, y: -0.53015435, z: -0.2900054, w: 0.4405496}
+      scale: {x: 1, y: 0.9999996, z: 0.9999997}
+    - name: R. pulgar.
+      parentName: R. Pulgar
+      position: {x: 1.4901161e-10, y: 0.00036043997, z: -0.0000000010803342}
+      rotation: {x: -0.47880268, y: -0.05359964, z: -0.15003301, w: 0.8633454}
+      scale: {x: 1.0000002, y: 1, z: 1}
+    - name: R. pulgar._end
+      parentName: R. pulgar.
+      position: {x: -0, y: 0.0003055745, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmatureEspada
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.2592867, y: 1.5744733, z: 0.38553187}
+      rotation: {x: -0.13506843, y: 0.88463116, z: 0.39947477, w: -0.19900793}
+      scale: {x: 32.238873, y: 32.238876, z: 32.238873}
+    - name: Mango
+      parentName: ArmatureEspada
+      position: {x: -0.00009916961, y: -0.0007400191, z: -0.0072622728}
+      rotation: {x: 0.68103933, y: 0.00028772766, z: 0.000861321, w: 0.7322463}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: espada1
+      parentName: Mango
+      position: {x: 1.7462298e-12, y: 0.003824162, z: -4.0945452e-11}
+      rotation: {x: 0.0016027892, y: -0.00041498436, z: 0.0025612034, w: 0.99999535}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: espada2
+      parentName: espada1
+      position: {x: 1.8662832e-11, y: 0.010028528, z: 1.6489138e-11}
+      rotation: {x: 0.000000005580432, y: -9.240466e-10, z: -0.0000000010622898, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: espada3
+      parentName: espada2
+      position: {x: 7.494236e-12, y: 0.010028525, z: 8.767528e-12}
+      rotation: {x: -0.000000005593165, y: 7.275958e-12, z: -1.03682396e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: espada 4
+      parentName: espada3
+      position: {x: 4.2200553e-12, y: 0.010028524, z: -2.786146e-10}
+      rotation: {x: 0.000000016758008, y: -4.4383341e-10, z: -8.076313e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: espada 4_end
+      parentName: espada 4
+      position: {x: -0, y: 0.01002853, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Brazaletes
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.1880603, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: cINTURON
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.1880603, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: Cube
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.4894313, y: 1.2209991, z: 0.6531422}
+      rotation: {x: 0.43116912, y: 0.1980333, z: 0.12939198, w: 0.87070876}
+      scale: {x: -40.268295, y: -40.26829, z: -40.26829}
+    - name: Hombreras
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.2059128, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.707092, y: 38.707092, z: 38.707092}
+    - name: Pantalon
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.1880603, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: personaje
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.18806, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: REMERA
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.1880603, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: Sphere
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 2.2716334, z: 0.12428893}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    - name: Zapato
+      parentName: Mujer caballera(Clone)
+      position: {x: 0.00000012665987, y: 1.3779614, z: 0.1261975}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 38.108612, y: 38.108612, z: 38.108612}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
