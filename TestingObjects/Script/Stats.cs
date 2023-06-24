@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stats
 {
+    public float healtFull { get; private set; }
     public float healt { get; private set; }
     public float damage { get; private set; }
     public float movingSpeed { get; private set; }
@@ -18,8 +19,9 @@ public class Stats
     /// <param name="movingSpeed"></param>
     /// <param name="attackSpeed"></param>
     #endregion
-    public Stats (float healt, float damage, float movingSpeed, float attackSpeed)
+    public Stats(float healt, float damage, float movingSpeed, float attackSpeed)
     {
+        this.healtFull = healt;
         this.healt = healt;
         this.damage = damage;
         this.movingSpeed = movingSpeed;
@@ -35,6 +37,10 @@ public class Stats
     public void ImpactDamage(float impactDamage)
     {
         healt -= impactDamage;
+    }
+
+    public float HealtPercent () {
+        return healt / healtFull;
     }
 
 }

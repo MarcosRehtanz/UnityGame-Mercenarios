@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private bool inRoom;
 
+    // using UnityEngine.UI;
+    [SerializeField] private Slider slideBarHealt;
+
     private void Start()
     {
         stats = new Stats(3, 0.5f, 20, 1.0f);
@@ -23,6 +27,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         distance = Vector3.Distance(transform.position, target.transform.position);
         if (inRoom)
         {
@@ -39,6 +44,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 v3 = Camera.main.transform.position;
+        v3.y = transform.GetChild(0).transform.position.y;
+        transform.GetChild(0).transform.LookAt(v3);
+        slideBarHealt.value = stats.HealtPercent();
+
         if (stats.healt <= 0)
         {
             Destroy(gameObject);
